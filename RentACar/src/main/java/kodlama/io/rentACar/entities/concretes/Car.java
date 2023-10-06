@@ -32,7 +32,10 @@ public class Car {
     @Column(name = "state")
     private int state;
 
-    //?
+    @Column(name = "imgUrl")
+    private  String imgUrl;
+
+
     @OneToMany(mappedBy = "car")
     private List<Maintenance> maintenanceList;
 
