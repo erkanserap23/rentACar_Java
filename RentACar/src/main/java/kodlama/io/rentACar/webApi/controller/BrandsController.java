@@ -38,29 +38,29 @@ public class BrandsController {
     //     this.brandService = brandService;
     // }
 
-    @GetMapping()
+    @GetMapping("getAll")
     public List<GetAllBrandsResponse> getAll() {
 
         return brandService.getAll();
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void add(@RequestBody @Valid() CreateBrandRequest createBrandRequest) {
          brandService.add(createBrandRequest);
     }
     
-    @GetMapping(value="/{id}")
+    @GetMapping(value="/getById/{id}")
     public GetByIdBrandResponse getById(@PathVariable int  id) {
         return brandService.getById(id);
     }
 
-    @PutMapping(value="/{id}")
+    @PutMapping(value="update/{id}")
     public void update( @RequestBody UpdateBrandRequest updateBrandRequest) {
         brandService.update(updateBrandRequest);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="delete/{id}")
     public void delete(@PathVariable int id) {
         brandService.delete(id);
     }

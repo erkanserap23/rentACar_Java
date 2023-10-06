@@ -20,31 +20,30 @@ import java.util.List;
 public class CarsController {
     private CarService carService;
 
-    @GetMapping()
+    @GetMapping("/getAll")
     public List<GetAllCarResponse> getAll() {
-
         return carService.getAll();
     }
-    @GetMapping("/{id}")
+    @GetMapping("/getById/{id}")
     public GetByIdCarResponse getById(@PathVariable int id){
         return carService.getById(id);
     }
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void add(@RequestBody CreateCarRequest request) {
         carService.add(request);
     }
-    @PutMapping(value="/{id}")
+    @PutMapping(value="/update/{id}")
     public void update( @RequestBody UpdateCarRequest updateCarRequest) {
         carService.update(updateCarRequest);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="/delete/{id}")
     public void delete(@PathVariable int id) {
         carService.delete(id);
     }
 
-    @GetMapping("brandId/{id}")
+    @GetMapping("/brandId/{id}")
     public List<GetAllCarByBrandId> getAllCarByBrandId(@PathVariable int id){
         return this.carService.getAllCarByBrandId(id);
     }
